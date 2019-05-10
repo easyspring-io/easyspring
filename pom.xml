@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<!--父项目的基本信息-->
+<!--项目组名称-->
+<groupId>io.easyspring.parent</groupId>
+<!--项目标识-->
+<artifactId>easy-spring</artifactId>
+<!--项目版本-->
+<version>1.5.0-SNAPSHOT</version>
+<!--jar 包管理方式-->
+<packaging>pom</packaging>
+<!--项目连接地址-->
+<url>https://www.easyspring.io/</url>
+
+<!--子模块-->
+<modules>
+<!--    <module>easy-spring-dependencies</module>-->
+<!--    <module>easy-spring-framework</module>-->
+<!--    <module>easy-spring-service</module>-->
+<!--    <module>easy-spring-manage</module>-->
+<!--    <module>easy-spring-business</module>-->
+<!--    <module>easy-spring-samples</module>-->
+<!--    <module>easy-spring-test</module>-->
+<!--    <module>easy-spring-security</module>-->
+<!--    <module>easy-spring-tools</module>-->
+<!--    <module>easy-spring-message</module>-->
+</modules>
+
+<!--项目名称-->
+<name>Easy Spring Build</name>
+<!--项目简介-->
+<description>Easy Spring Build</description>
+
+<!--项目许可信息-->
+<licenses>
+    <license>
+        <name>Apache License, Version 2.0</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        <distribution>repo</distribution>
+    </license>
+    <license>
+        <name>The GNU General Public License, v3 with FOSS exception</name>
+        <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+        <distribution>repo</distribution>
+    </license>
+</licenses>
+
+<!--项目代码信息-->
+<scm>
+    <tag>master</tag>
+    <url>https://gitee.com/easyspring/spring-book</url>
+    <connection>https://gitee.com/easyspring/spring-book.git</connection>
+    <developerConnection>https://www.easyspring.io/</developerConnection>
+</scm>
+
+<!--项目作者-->
+<developers>
+    <developer>
+        <name>XianLi</name>
+        <email>easyspring@163.com</email>
+        <organizationUrl>https://www.easyspring.io/</organizationUrl>
+    </developer>
+</developers>
+
+<!--项目编码,java 及 jar 包的版本-->
+<!--编码, 版本-->
+<properties>
+    <!--项目编码及版本-->
+    <!--源码编码-->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--编译文件编码-->
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!--java版本-->
+    <java.version>1.8</java.version>
+    <!--因为 maven 的 bug 这里需要手动指定一下源码和编译后代码的版本-->
+    <!--源码版本-->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <!--编译版本-->
+    <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+
+<profiles>
+
+    <profile>
+        <id>disable-javadoc-doclint</id>
+        <activation>
+            <jdk>[1.8,)</jdk>
+        </activation>
+        <properties>
+            <javadoc.opts>-Xdoclint:none</javadoc.opts>
+        </properties>
+    </profile>
+
+    <profile>
+        <id>release</id>
+        <build>
+            <pluginManagement>
+                <plugins>
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <doclint>none</doclint>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- GPG -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </pluginManagement>
+        </build>
+        <!--发布信息配置-->
+        <distributionManagement>
+            <snapshotRepository>
+                <id>oss-snapshot</id>
+                <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            </snapshotRepository>
+            <repository>
+                <id>oss-release</id>
+                <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            </repository>
+        </distributionManagement>
+    </profile>
+
+    <profile>
+        <id>snapshot</id>
+        <build>
+            <pluginManagement>
+                <plugins>
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- GPG -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </pluginManagement>
+        </build>
+        <!--发布信息配置-->
+        <distributionManagement>
+            <snapshotRepository>
+                <id>oss-snapshot</id>
+                <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            </snapshotRepository>
+            <repository>
+                <id>oss-release</id>
+                <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            </repository>
+        </distributionManagement>
+    </profile>
+
+    <profile>
+        <id>easyspring-release</id>
+        <build>
+            <plugins>
+                <!-- Source -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Javadoc -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <doclint>none</doclint>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+        <!--发布信息配置-->
+        <distributionManagement>
+            <snapshotRepository>
+                <id>easyspring-snapshot</id>
+                <url>http://oss.easyspring.net/repository/maven-snapshots/</url>
+            </snapshotRepository>
+            <repository>
+                <id>easyspring-release</id>
+                <url>http://oss.easyspring.net/repository/maven-releases/</url>
+            </repository>
+        </distributionManagement>
+    </profile>
+
+    <profile>
+        <id>easyspring-snapshot</id>
+        <build>
+            <plugins>
+                <!-- Source -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+        <!--发布信息配置-->
+        <distributionManagement>
+            <snapshotRepository>
+                <id>easyspring-snapshot</id>
+                <url>http://oss.easyspring.net/repository/maven-snapshots/</url>
+            </snapshotRepository>
+            <repository>
+                <id>easyspring-release</id>
+                <url>http://oss.easyspring.net/repository/maven-releases/</url>
+            </repository>
+        </distributionManagement>
+    </profile>
+</profiles>
+
+<!--配置资源仓库-->
+<repositories>
+    <!-- Repositories to allow snapshot and milestone BOM imports during development.
+        This section is stripped by the flatten plugin during install/deploy. -->
+    <repository>
+        <id>central</id>
+        <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+    <repository>
+        <id>apache-milestone</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+    <repository>
+        <id>spring-milestone</id>
+        <name>Spring Milestone</name>
+        <url>https://repo.spring.io/milestone</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+    <repository>
+        <id>spring-snapshot</id>
+        <name>Spring Snapshot</name>
+        <url>https://repo.spring.io/snapshot</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+    <repository>
+        <id>rabbit-milestone</id>
+        <name>Rabbit Milestone</name>
+        <url>https://dl.bintray.com/rabbitmq/maven-milestones</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+
+    <!--maven nexus snapshot 库-->
+    <repository>
+        <id>easyspring-snapshot</id>
+        <name>Easyspring Snapshot</name>
+        <url>http://oss.easyspring.net/repository/maven-snapshots</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+    <!--maven nexus release 库-->
+    <repository>
+        <id>easyspring-release </id>
+        <name>Easyspring Release</name>
+        <url>http://oss.easyspring.net/repository/maven-release</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+
+</repositories>
+<!--配置插件仓库-->
+<pluginRepositories>
+    <pluginRepository>
+        <id>central</id>
+        <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+        <id>apache-milestone</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+        <id>spring-milestone</id>
+        <name>Spring Milestone</name>
+        <url>https://repo.spring.io/milestone</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+        <id>spring-snapshot</id>
+        <name>Spring Snapshot</name>
+        <url>https://repo.spring.io/snapshot</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </pluginRepository>
+</pluginRepositories>
+
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <!--加入 maven java doc 插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
+</project>
