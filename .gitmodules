@@ -1,0 +1,33 @@
+[submodule "easy-spring-dependencies"]
+	path = easy-spring-dependencies
+	url = https://gitee.com/easyspring/easy-spring-dependencies.git
+[submodule "easy-spring-parent"]
+	path = easy-spring-parent
+	url = https://gitee.com/easyspring/easy-spring-parent.git
+[submodule "easy-spring-framework/framework-base"]
+	path = easy-spring-framework/framework-base
+	url = https://gitee.com/easyspring/framework-base.git
+[submodule "easy-spring-framework/framework-common"]
+	path = easy-spring-framework/framework-common
+	url = https://gitee.com/easyspring/framework-common.git
+[submodule "easy-spring-docs"]
+	path = easy-spring-docs
+	url = https://gitee.com/easyspring/easy-spring-docs.git
+[submodule "easy-spring-message"]
+	path = easy-spring-message
+	url = https://gitee.com/easyspring/easy-spring-message.git
+[submodule "easy-spring-samples"]
+	path = easy-spring-samples
+	url = https://gitee.com/easyspring/easy-spring-samples.git
+[submodule "easy-spring-security"]
+	path = easy-spring-security
+	url = https://gitee.com/easyspring/easy-spring-security.git
+[submodule "easy-spring-test"]
+	path = easy-spring-test
+	url = https://gitee.com/easyspring/easy-spring-test.git
+[submodule "easy-spring-tools/tools-file"]
+	path = easy-spring-tools/tools-file
+	url = https://gitee.com/easyspring/tools-file.git
+[submodule "easy-spring-generator"]
+	path = easy-spring-generator
+	url = https://gitee.com/easyspring/easy-spring-generator.git
