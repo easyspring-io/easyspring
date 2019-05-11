@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.easyspring.parent</groupId>
+        <artifactId>easy-spring-parent</artifactId>
+        <version>1.5.0-SNAPSHOT</version>
+        <relativePath>../easy-spring-parent</relativePath>
+    </parent>
+
+<!--    项目地址 Group-->
+    <groupId>io.easyspring.framework</groupId>
+<!--    项目 id-->
+    <artifactId>easy-spring-framework</artifactId>
+<!--    项目版本-->
+    <version>1.5.0-SNAPSHOT</version>
+    <!--打包方式-->
+    <packaging>pom</packaging>
+    <!--项目名称-->
+    <name>Easy Spring Framework</name>
+    <!--项目简介-->
+    <description>Easy Spring Framework</description>
+    <!--项目连接地址-->
+    <url>https://www.easyspring.io/</url>
+
+    <!--子模块-->
+    <modules>
+        <module>framework-base</module>
+        <module>framework-common</module>
+    </modules>
+</project>
