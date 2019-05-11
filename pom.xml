@@ -37,9 +37,9 @@
         <module>easy-spring-framework</module>
         <module>easy-spring-security</module>
 
+        <module>easy-spring-basis</module>
         <module>easy-spring-tools</module>
         <module>easy-spring-message</module>
-    <!--    <module>easy-spring-manage</module>-->
     <!--    <module>easy-spring-business</module>-->
 
         <module>easy-spring-samples</module>

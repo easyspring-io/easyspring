@@ -34,3 +34,6 @@
 [submodule "easy-spring-tools"]
 	path = easy-spring-tools
     url=https://gitee.com/easyspring/easy-spring-tools.git
+[submodule "easy-spring-basis"]
+	path = easy-spring-basis
+	url = https://gitee.com/easyspring/easy-spring-basis.git
