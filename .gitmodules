@@ -25,9 +25,6 @@
 [submodule "easy-spring-test"]
 	path = easy-spring-test
 	url = https://gitee.com/easyspring/easy-spring-test.git
-[submodule "easy-spring-tools/tools-file"]
-	path = easy-spring-tools/tools-file
-	url = https://gitee.com/easyspring/tools-file.git
 [submodule "easy-spring-generator"]
 	path = easy-spring-generator
 	url = https://gitee.com/easyspring/easy-spring-generator.git
