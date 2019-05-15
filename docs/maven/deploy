@@ -2,6 +2,6 @@ mvn clean deploy -P release -Dgpg.passphrase=P2ssw0rd -Dmaven.test.skip=true
 
 mvn clean deploy -P snapshot -Dgpg.passphrase=P2ssw0rd -Dmaven.test.skip=true
 
-mvn clean deploy -P risk-release -Dmaven.test.skip=true
+mvn clean deploy -P easyspring-release -Dmaven.test.skip=true
 
-mvn clean deploy -P risk-snapshot -Dmaven.test.skip=true
+mvn clean deploy -P easyspring-snapshot -Dmaven.test.skip=true
