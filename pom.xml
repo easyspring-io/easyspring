@@ -10,7 +10,7 @@
     <!--项目标识-->
     <artifactId>easy-spring-project</artifactId>
     <!--项目版本-->
-    <version>1.5.0-RELEASE</version>
+    <version>1.5.0-SNAPSHOT</version>
     <!--jar 包管理方式-->
     <packaging>pom</packaging>
     <!--项目连接地址-->
